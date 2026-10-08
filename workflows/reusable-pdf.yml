@@ -1,0 +1,11 @@
+name: reusable oeneyepdf — no FITZ no FPDF
+on: [workflow_call]
+jobs:
+  pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          chmod +x xtex.sh oeneyepdf.c || true
+          ./xtex.sh || python3 oeneyepdf.c
+          ls -lh MOSFETQexchange/output/
